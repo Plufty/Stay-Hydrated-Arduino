@@ -1,3 +1,8 @@
+//Gleidson Vinicius Gomes Barbosa - 6331
+//Isaias Souza Silva 			  - 4874
+//Arleson Roberto				  - 5231
+/***************************************************************/
+//Inclusão de bibliotecas, LCD e inclusão de CI
 #include <LiquidCrystal.h>
 #define pinSH_CP 11   //Pino Clock
 #define pinST_CP 12  //Pino  Latch
@@ -446,21 +451,21 @@ void loop()
 	      	delay (5000);
           	descontodelay=descontodelay+5000;
 	      	lcd.clear();//Limpando o LCD para o proximo print
-            lcd.print ("Espere 120s para");
+            lcd.print ("Espere 40s para");
           	lcd.setCursor (0,2);//colocando o cursor na segunda linha
 	      	lcd.print ("adiar, ou ");
 	      	delay (5000);            
           	descontodelay=descontodelay+5000;
           	lcd.clear();//Limpando o LCD para o proximo print
-	        lcd.print ("mantenha o botao");
+	        lcd.print ("para confirmar");
 	      	lcd.setCursor (0,2);//colocando o cursor na segunda linha
-	      	lcd.print ("pressionado");
+	      	lcd.print ("o consumo");
 	      	delay (5000);
           	descontodelay=descontodelay+5000;
           	lcd.clear();//Limpando o LCD para o proximo print
-            lcd.print ("para confirmar");
+            lcd.print ("mantenha o botao");
 	      	lcd.setCursor (0,2);//colocando o cursor na segunda linha
-	      	lcd.print ("o consumo.");
+	      	lcd.print ("pressionado 6s.");
 	      	delay (5000);
           	descontodelay=descontodelay+5000;
 	      	lcd.clear();//Limpando o LCD para o proximo print
@@ -471,7 +476,7 @@ void loop()
                lcd.print ("Para consumo de");
                lcd.setCursor (0,2);//colocando o cursor na segunda linha
                lcd.print (intervalo);
-               lcd.print ("ml espere 60s");
+               lcd.print ("ml espere 30s");
                delay (5000);
                descontodelay=descontodelay+5000;
                lcd.clear();//Limpando o LCD para o proximo print
@@ -484,7 +489,7 @@ void loop()
                lcd.clear();
     	       lcd.print ("Mantenha o botao");
 	   		   lcd.setCursor (0,2);//colocando o cursor na segunda linha
-	      	   lcd.print ("pressionado");
+	      	   lcd.print ("pressionado 6s");
 	      	   delay (5000);
                descontodelay=descontodelay+5000;
                lcd.clear();
@@ -495,15 +500,17 @@ void loop()
                }               
                else
                {
-               	  delay (60000);//delay 60s para consumo de 1 intervalo.
+               	  delay (30000);//delay 30s para consumo de 1 intervalo.
+                  descontodelay=descontodelay+30000;
                   conf=1;//para o consumo de água equivalente a 1 intervalo
                }
             }//fim do if (buttons==HIGH)
           	else
             {
               	conf==3;//para pular o consumo de água do intervalo citado.
+                delay (40000);//delay 40s apra adiar o consumo.
+                descontodelay=descontodelay+40000;
             }
-          	delay (120000);//delay 120s apra adiar o consumo.
 	      	ci74HC595Write(20, LOW);
             ci74HC595Write(23, LOW);
 	        if (conf != 1 && conf != 2)//Se o intervalo tiver sido adiado ou perdido
